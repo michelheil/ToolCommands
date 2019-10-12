@@ -139,6 +139,11 @@ sudo apt-get install rhythmbox
 ##############################################
 sudo apt-get install vlc
 
+##############################################
+## Mosquitto MQTT
+##############################################
+sudo apt-get install mosquitto mosquitoo-clients
+
 
 
 ##############################################
