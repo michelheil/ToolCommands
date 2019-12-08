@@ -89,6 +89,12 @@ sudo apt-get install sbt
 sudo snap install intellij-idea-community --classic
 snap list --all
 
+##############################################
+## install intellij
+##############################################
+# https://jakemakes.eu/saleae-logic-analyzer-software-install-on-linux/
+sudo apt-get install pulseview -y
+
 
 ##############################################
 ## install PyCharm Community Edition
@@ -144,6 +150,14 @@ sudo apt-get install vlc
 ##############################################
 sudo apt-get install mosquitto mosquitoo-clients
 
+##############################################
+## Microsoft Visual Studio Code
+##############################################
+sudo snap install --classic code
+
+sudo apt-get install avr-libc
+sudo apt-get install gcc-avr
+sudo apt-get install doxygen doxygen-doc doxygen-gui graphviz 
 
 
 ##############################################
