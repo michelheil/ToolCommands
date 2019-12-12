@@ -160,8 +160,7 @@ sudo apt-get install mosquitto mosquitto-clients
 ##############################################
 sudo snap install --classic code
 
-sudo apt-get install avr-libc
-sudo apt-get install gcc-avr
+sudo apt-get install avr-libc gcc-avr gcc
 sudo apt-get install doxygen doxygen-doc doxygen-gui graphviz 
 
 
