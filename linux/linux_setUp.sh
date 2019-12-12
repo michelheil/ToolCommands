@@ -130,7 +130,7 @@ sudo service ssh status
 ## install slack
 ##############################################
 # https://websiteforstudents.com/installing-slack-for-linux-on-ubuntu-16-04-17-10-18-04/
-sudo apt install snapd
+sudo apt install snap
 sudo snap install slack --classic
 
 
@@ -153,7 +153,7 @@ sudo apt-get install vlc
 ##############################################
 ## Mosquitto MQTT
 ##############################################
-sudo apt-get install mosquitto mosquitoo-clients
+sudo apt-get install mosquitto mosquitto-clients
 
 ##############################################
 ## Microsoft Visual Studio Code
