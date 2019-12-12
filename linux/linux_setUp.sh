@@ -1,4 +1,9 @@
 ##############################################
+## Install git
+##############################################
+sudo apt install git
+
+##############################################
 ## Use SSH to connect with GitHub
 ##############################################
 https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account
