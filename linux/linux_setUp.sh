@@ -95,7 +95,7 @@ sudo snap install intellij-idea-community --classic
 snap list --all
 
 ##############################################
-## install intellij
+## install PulseView (AZ Delivery Logic Analyzer)
 ##############################################
 # https://jakemakes.eu/saleae-logic-analyzer-software-install-on-linux/
 sudo apt-get install pulseview -y
