@@ -163,9 +163,10 @@ sudo snap install --classic code
 sudo apt-get install avr-libc gcc-avr gcc
 sudo apt-get install doxygen doxygen-doc doxygen-gui graphviz 
 
-# ensure that the user michael is part of the userGroup tty in order to access the USB ports
-sudo usermod -a -G tty michael
-
+# ensure that the user michael is part of the correct userGroup in order to access the USB ports
+ls -l /dev/ttyACM3
+sudo adduser michael dialout
+# check with command "groups", a restart is necessary
 
 ##############################################
 ## Installing Boot Repair on Ubuntu
