@@ -1,4 +1,9 @@
 ##############################################
+## Install git
+##############################################
+sudo apt install git
+
+##############################################
 ## Use SSH to connect with GitHub
 ##############################################
 https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account
@@ -90,7 +95,7 @@ sudo snap install intellij-idea-community --classic
 snap list --all
 
 ##############################################
-## install intellij
+## install PulseView (AZ Delivery Logic Analyzer)
 ##############################################
 # https://jakemakes.eu/saleae-logic-analyzer-software-install-on-linux/
 sudo apt-get install pulseview -y
@@ -125,7 +130,7 @@ sudo service ssh status
 ## install slack
 ##############################################
 # https://websiteforstudents.com/installing-slack-for-linux-on-ubuntu-16-04-17-10-18-04/
-sudo apt install snapd
+sudo apt install snap
 sudo snap install slack --classic
 
 
@@ -148,17 +153,20 @@ sudo apt-get install vlc
 ##############################################
 ## Mosquitto MQTT
 ##############################################
-sudo apt-get install mosquitto mosquitoo-clients
+sudo apt-get install mosquitto mosquitto-clients
 
 ##############################################
 ## Microsoft Visual Studio Code
 ##############################################
 sudo snap install --classic code
 
-sudo apt-get install avr-libc
-sudo apt-get install gcc-avr
+sudo apt-get install avr-libc gcc-avr gcc
 sudo apt-get install doxygen doxygen-doc doxygen-gui graphviz 
 
+# ensure that the user michael is part of the correct userGroup in order to access the USB ports
+ls -l /dev/ttyACM3
+sudo adduser michael dialout
+# check with command "groups", a restart is necessary
 
 ##############################################
 ## Installing Boot Repair on Ubuntu
