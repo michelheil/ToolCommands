@@ -52,8 +52,7 @@ pip3 --version
 ##############################################
 ## install Hadoop and HBase
 ##############################################
-#
-https://computingforgeeks.com/how-to-install-apache-hadoop-hbase-on-ubuntu/
+# https://computingforgeeks.com/how-to-install-apache-hadoop-hbase-on-ubuntu/
 
 
 ##############################################
