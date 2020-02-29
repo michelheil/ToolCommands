@@ -1,13 +1,37 @@
+# Installation on Ubuntu
+https://computingforgeeks.com/how-to-install-apache-hadoop-hbase-on-ubuntu/
+
 # Where to find hbase-site.xml of HBase installation
-sudo -su hadoop bash
 hadoop@michael-PRIME-Z390-A:~$ more /usr/local/HBase/conf/hbase-site.xml
 
-
 # How to start HBase server
+## Start Hadoop (DFS and YARN)
+sudo su - hadoop
+start-dfs.sh
+start-yarn.sh
+start-hbase.sh
+local-master-backup.sh start 2
+local-regionservers.sh start 3
+
+### Check ports used by hadoop
+    NameNode – Default HTTP port is 9870.
+    ResourceManager – Default HTTP port is 8088.
+    MapReduce JobHistory Server – Default HTTP port is 19888.
+
+
+### If HMaster is not starting
+https://stackoverflow.com/questions/28295521/hbase-hdfs-integration-hbase-master-not-starting
+
+
+## Alles in einem Script zusammengefasst
 cd ~/GitHubRepositories/ToolCommands/hadoop
-sudo -u hadoop bash start.sh
+bash start.sh
 
 
+# Where to find logs:
+/usr/local/HBase/logs
+
+# HBase Configuration files
 [HBase Configuration File Descriptions](https://hbase.apache.org/book.html#_configuration_files)
 
 /usr/local/HBase/conf$ ls

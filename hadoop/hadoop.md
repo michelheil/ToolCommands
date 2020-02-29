@@ -1,3 +1,9 @@
+# Scripts for hadoop
+/usr/local/hadoop/sbin
+
+Access Hadoop Web Dashboard on http://ServerIP:9870
+Check Hadoop Cluster Overview at http://ServerIP:8088
+
 # Hadoop configuration
 /usr/local/hadoop/etc/hadoop
 
