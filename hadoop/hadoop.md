@@ -2,11 +2,35 @@
 /usr/local/hadoop/etc/hadoop
 
 /usr/local/hadoop/etc/hadoop$ ls
-capacity-scheduler.xml      hadoop-user-functions.sh.example  kms-log4j.properties        ssl-client.xml.example
-configuration.xsl           hdfs-site.xml                     kms-site.xml                ssl-server.xml.example
-container-executor.cfg      httpfs-env.sh                     log4j.properties            user_ec_policies.xml.template
-core-site.xml               httpfs-log4j.properties           mapred-env.cmd              workers
-hadoop-env.cmd              httpfs-signature.secret           mapred-env.sh               yarn-env.cmd
-hadoop-env.sh               httpfs-site.xml                   mapred-queues.xml.template  yarn-env.sh
-hadoop-metrics2.properties  kms-acls.xml                      mapred-site.xml             yarnservice-log4j.properties
-hadoop-policy.xml           kms-env.sh                                      yarn-site.xml
+* capacity-scheduler.xml
+* configuration.xsl
+* container-executor.cfg
+* core-site.xml
+* hadoop-env.cmd
+* hadoop-env.sh
+* hadoop-metrics2.properties
+* hadoop-policy.xml
+* hadoop-user-functions.sh.example
+* hdfs-site.xml
+* httpfs-env.sh
+* httpfs-log4j.properties
+* httpfs-signature.secret
+* httpfs-site.xml
+* kms-acls.xml
+* kms-env.sh
+* kms-log4j.properties
+* kms-site.xml
+* log4j.properties
+* mapred-env.cmd
+* mapred-env.sh
+* mapred-queues.xml.template
+* mapred-site.xml
+* ssl-client.xml.example
+* ssl-server.xml.example
+* user_ec_policies.xml.template
+* workers
+* yarn-env.cmd
+* yarn-env.sh
+* yarnservice-log4j.properties
+* yarn-site.xml
+
