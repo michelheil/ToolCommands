@@ -1,3 +1,6 @@
+# Comprehensive Tutorial for HBase shell commands
+https://learnhbase.net/2013/03/02/hbase-shell-commands/
+
 ## Open hbase shell
 hbase shell
 
@@ -15,3 +18,6 @@ describe 'myFirstTable'
 
 ## scan complete table
 scan 'namespace:tablename'
+
+## Read HBase Shell Commands from a Command File
+./hbase shell ./sample_commands.txt
