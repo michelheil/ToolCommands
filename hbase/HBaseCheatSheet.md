@@ -19,6 +19,9 @@ describe 'myFirstTable'
 ## scan complete table
 scan 'namespace:tablename'
 
+## scan table with prefix filter on rowkey
+scan 'hbase:meta', { FILTER => "(PrefixFilter ('employee'))" }
+
 ## Read HBase Shell Commands from a Command File
 http://hbase.apache.org/book.html#_read_hbase_shell_commands_from_a_command_file
 ./hbase shell ./sample_commands.txt

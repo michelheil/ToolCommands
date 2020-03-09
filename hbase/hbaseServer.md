@@ -24,6 +24,7 @@ https://stackoverflow.com/questions/28295521/hbase-hdfs-integration-hbase-master
 
 
 ## Alles in einem Script zusammengefasst
+(als user 'michael')
 cd ~/GitHubRepositories/ToolCommands/hadoop
 bash start.sh
 
