@@ -22,6 +22,9 @@ scan 'namespace:tablename'
 ## scan table with prefix filter on rowkey
 scan 'hbase:meta', { FILTER => "(PrefixFilter ('employee'))" }
 
+## scan starting at a given rowkey
+scan 'tableName', { STARTROW => '2019-10-17T08:37:10.125_5da04829'}
+
 ## Read HBase Shell Commands from a Command File
 http://hbase.apache.org/book.html#_read_hbase_shell_commands_from_a_command_file
 ./hbase shell ./sample_commands.txt
