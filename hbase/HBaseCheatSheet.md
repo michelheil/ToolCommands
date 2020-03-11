@@ -16,6 +16,9 @@ create 'myFirstTable', 'colF'
 ## describe a table
 describe 'myFirstTable'
 
+## count rows of table
+count 'myFirstTable', INTERVAL => 100
+
 ## scan complete table
 scan 'namespace:tablename'
 
