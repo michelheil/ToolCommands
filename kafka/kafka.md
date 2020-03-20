@@ -15,10 +15,11 @@ cd /home/michael/kafka/current
 > ./kafka/current/bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test
 
 # Kafka Console Producer
-> ./kafka/current/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+> ./kafka/current/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test --property "parse.key=true" 
+  --property "key.separator=:::"
 
 # Kafka Console Consumer
-> ./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+> ./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning --property print.key=true --property print.value=true
 
 # Stop Kafka
 cd /home/michael/kafka/current
