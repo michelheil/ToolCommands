@@ -21,6 +21,9 @@ cd /home/michael/kafka/current
 # Kafka Console Consumer
 > ./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning --property print.key=true --property print.value=true
 
+# Check Consumer Groups
+> ./kafka/current/bin/kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group flum
+
 # Stop Kafka
 cd /home/michael/kafka/current
 * bin/zookeeper-server-stop.sh
