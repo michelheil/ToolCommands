@@ -12,6 +12,8 @@ cd /home/michael/kafka/current
 
 > ./kafka/current/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 
+> ./kafka/current/bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test
+
 # Kafka Console Producer
 > ./kafka/current/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 
