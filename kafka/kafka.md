@@ -8,9 +8,14 @@ cd /home/michael/kafka/current
 * bin/kafka-server-start.sh config/server.properties
 
 # Kafka topic admin
-./kafka/current/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic testingKafkaProducer \n
-./kafka/current/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+> ./kafka/current/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic testingKafkaProducer
+> ./kafka/current/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 
+# Kafka Console Producer
+> ./kafka/current/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+
+# Kafka Console Consumer
+> ./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
 
 # Stop Kafka
 cd /home/michael/kafka/current
