@@ -22,7 +22,13 @@ cd /home/michael/kafka/current
 > ./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning --property print.key=true --property print.value=true
 
 # Check Consumer Groups
-> ./kafka/current/bin/kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group flum
+> ./kafka/current/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+```shell
+spark-kafka-source-b89fd278-521b-485d-9df9-d4a69895ccd2-636459464-driver-0
+console-consumer-72987
+```
+> ./kafka/current/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group "spark-kafka-source-b89fd278-521b-485d-9df9-d4a69895ccd2-636459464-driver-0"
+
 
 # Stop Kafka
 cd /home/michael/kafka/current
