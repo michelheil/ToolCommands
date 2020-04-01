@@ -21,6 +21,11 @@ cd /home/michael/kafka/current
 # Kafka Console Consumer
 > ./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning --property print.key=true --property print.value=true
 
+# Console Consumer from particular offset
+```bash
+./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --partition 0 --offset 1
+```
+
 # Check Consumer Groups
 > ./kafka/current/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
 ```shell
