@@ -34,6 +34,12 @@ console-consumer-72987
 ```
 > ./kafka/current/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group "spark-kafka-source-b89fd278-521b-485d-9df9-d4a69895ccd2-636459464-driver-0"
 
+## Change offsets for consumer Group
+With a `-5` in parameter `--shift-by` you substract 5 from current offset. The option `--execute` actually exectues the change, whereas you can use `--dry-run` to see what is hapenning. In order to change offsets for a Consumer Group it need to be inactive, i.e. not running.
+```shell
+./kafka/current/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group "CheckpointGroupId1337" --reset-offsets --topic "myTestTopicCheck:0" --shift-by -5 --execute
+```
+
 
 # Stop Kafka
 cd /home/michael/kafka/current
