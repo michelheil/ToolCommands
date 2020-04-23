@@ -50,6 +50,12 @@ sudo apt install python3-pip
 pip3 --version
 
 ##############################################
+## install Kafkacat
+##############################################
+# https://github.com/edenhill/kafkacat
+sudo apt-get install kafkacat
+
+##############################################
 ## install Hadoop and HBase
 ##############################################
 # https://computingforgeeks.com/how-to-install-apache-hadoop-hbase-on-ubuntu/
@@ -192,7 +198,8 @@ mkdir $HOME/$APP && cd $HOME/$APP
 wget "${URL}"
 tar zxvf $INSTFILE
 
-bin/zeppelin-daemon.sh start
+bash ~/zeppelin/currentbin/zeppelin-daemon.sh start
+bash ~/zeppelin/currentbin/zeppelin-daemon.sh stop
 # bin/zeppelin-daemon.sh stop
 
 # Analog: Spark, Kafka

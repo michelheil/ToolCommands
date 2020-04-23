@@ -31,3 +31,7 @@ scan 'tableName', { STARTROW => '2019-10-17T08:37:10.125_5da04829'}
 ## Read HBase Shell Commands from a Command File
 http://hbase.apache.org/book.html#_read_hbase_shell_commands_from_a_command_file
 ./hbase shell ./sample_commands.txt
+
+## Simple configuration for HBase Security
+https://hbase.apache.org/book.html#hbase.secure.simpleconfiguration
+grant 'michael', 'RWCA'

@@ -13,6 +13,13 @@ start-hbase.sh
 local-master-backup.sh start 2
 local-regionservers.sh start 3
 
+## Stop Hadoop and HBase
+local-regionservers.sh stop 3
+local-master-backup.sh stop 2
+stop-hbase.sh
+stop-yarn.sh
+stop-dfs.sh
+
 ### Check ports used by hadoop
     NameNode – Default HTTP port is 9870.
     ResourceManager – Default HTTP port is 8088.
@@ -44,6 +51,31 @@ bash start.sh
 * log4j-hbtop.properties
 * log4j.properties
 * regionservers
+
+
+# Add the following to the hbase-site.xml
+<property>
+  <name>hbase.security.authentication</name>
+  <value>simple</value>
+</property>
+<property>
+  <name>hbase.security.authorization</name>
+  <value>true</value>
+</property>
+<property>
+  <name>hbase.coprocessor.master.classes</name>
+  <value>org.apache.hadoop.hbase.security.access.AccessController</value>
+</property>
+<property>
+  <name>hbase.coprocessor.region.classes</name>
+  <value>org.apache.hadoop.hbase.security.access.AccessController</value>
+</property>
+<property>
+  <name>hbase.coprocessor.regionserver.classes</name>
+  <value>org.apache.hadoop.hbase.security.access.AccessController</value>
+</property>
+
+
 
 
 ## backup-masters
