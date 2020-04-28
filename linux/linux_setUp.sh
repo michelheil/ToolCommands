@@ -50,6 +50,11 @@ sudo apt install python3-pip
 pip3 --version
 
 ##############################################
+## install jq
+##############################################
+sudo apt  install jq
+
+##############################################
 ## install Kafkacat
 ##############################################
 # https://github.com/edenhill/kafkacat
