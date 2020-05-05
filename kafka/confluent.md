@@ -1,6 +1,4 @@
-Confluent.md
-
-# Install
+# Install Confluent Community
 https://docs.confluent.io/current/installation/installing_cp/zip-tar.html
 
 ```bash
@@ -8,41 +6,79 @@ curl -O http://packages.confluent.io/archive/5.5/confluent-community-5.5.0-2.11.
 tar xzf confluent-community-5.5.0-2.11.tar.gz
 ```
 
-# Start Zookeeper, Kafka and Schema Registry
+## Set environment variables
 ```bash
-cd ~/confluent/confluent-5.5.0
-bash bin/zookeeper-server-start ~/confluent/confluent-5.5.0/etc/kafka/zookeeper.properties
-bash bin/kafka-server-start ~/confluent/confluent-5.5.0/etc/kafka/server.properties
-bash bin/schema-registry-start ~/confluent/confluent-5.5.0/etc/schema-registry/schema-registry.properties
+export CONFLUENT_HOME=/home/michael/confluent/confluent-5.5.0
+export PATH=$PATH:$CONFLUENT_HOME/bin
 ```
 
-# Start REST Proxy ksqlDB
+## Install Confluent CLI
+https://docs.confluent.io/current/quickstart/ce-quickstart.html
+https://docs.confluent.io/current/cli/command-reference/index.html#cli-command-reference
+
 ```bash
-bash bin/kafka-rest-start ~/confluent/confluent-5.5.0/etc/kafka-rest/kafka-rest.properties
-bash bin/ksql-server-start ~/confluent/confluent-5.5.0/etc/ksqldb/ksql-server.properties
+curl -L --http1.1 https://cnfl.io/cli | sh -s -- -b /<path-to-cli>
 ```
 
-# Create Topic
+## Install Confluent-Hub
+https://docs.confluent.io/current/connect/managing/confluent-hub/client.html#confluent-hub-client
+
+## Start Entire Confluent Platform
 ```bash
-./bin/kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic avrotest
+confluent local start
 ```
 
-# Console Consumer
+## Start Zookeeper, Kafka and Schema Registry
 ```bash
-./bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world-topic --from-beginning --property print.key=true --property print.value=true
+zookeeper-server-start ~/confluent/confluent-5.5.0/etc/kafka/zookeeper.properties
+kafka-server-start ~/confluent/confluent-5.5.0/etc/kafka/server.properties
+schema-registry-start ~/confluent/confluent-5.5.0/etc/schema-registry/schema-registry.properties
 ```
 
-# Console AVRO Consumer
-## When only value is serialzed as key but you only want to print out value (and not key)
+## Start Connect, REST Proxy, and ksqlDB
 ```bash
-./bin/kafka-avro-console-consumer \
+connect-distributed ~/confluent/confluent-5.5.0/etc/schema-registry/connect-avro-distributed.properties
+kafka-rest-start ~/confluent/confluent-5.5.0/etc/kafka-rest/kafka-rest.properties
+ksql-server-start ~/confluent/confluent-5.5.0/etc/ksqldb/ksql-server.properties
+```
+
+## Create Topic
+```bash
+kafka-topics --bootstrap-server localhost:9092 --create --replication-factor 1 --partitions 1 --topic avrotest
+
+--config confluent.value.schema.validation=true
+```
+
+## Console Producer
+```bash
+kafka-console-producer --broker-list localhost:9092 --topic TextLinesTopic
+
+--property "parse.key=true" --property "key.separator=:::"
+```
+
+## Console Consumer
+```bash
+kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --property print.key=true --property print.value=true --topic hello-world-topic
+
+--value-deserializer org.apache.kafka.common.serialization.LongDeserializer
+```
+
+### Console Consumer (read only committed transactional data)
+```bash
+kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world-topic --from-beginning --property print.key=true --property print.value=true --isolation.level=read_committed
+```
+
+## Console AVRO Consumer
+### When only value is serialzed as key but you only want to print out value (and not key)
+```bash
+kafka-avro-console-consumer \
   --bootstrap-server localhost:9092 \
   --from-beginning \
   --topic avrotest \
   --property schema.registry.url=http://localhost:8081
 ```
 
-## When only value is serialized as AVRO but you also want to print.key=true
+### When only value is serialized as AVRO but you also want to print.key=true
 
 ### Get content of schema-id in Schema Registry
 ```bash
@@ -50,7 +86,7 @@ curl --silent -X GET http://localhost:8081/schemas/ids/1 | jq .
 ```
 
 ```bash
-./bin/kafka-avro-console-consumer \
+kafka-avro-console-consumer \
   --bootstrap-server localhost:9092 \
   --from-beginning \
   --topic avrotest --property print.key=true \
@@ -61,7 +97,7 @@ curl --silent -X GET http://localhost:8081/schemas/ids/1 | jq .
 
 
 
-## Create Topic through REST API v3
+### Create Topic through REST API v3
 First figure out the cluster-id
 
 ```bash
@@ -78,12 +114,44 @@ curl -X POST -H "Content-Type: application/vnd.api+json" -H "Accept: application
 
 
 
+# Kafka Connect Example
+https://docs.confluent.io/current/connect/userguide.html
+
+## Running Standalone mode
+https://docs.confluent.io/current/connect/userguide.html#standalone-mode
+
+```bash
+connect-standalone worker.properties connector1.properties [connector2.properties connector3.properties ...]
+```
+
+worker.properties can be found here:
+etc/schema-registry/connect-avro-standalone.properties
+
+conector.properties can be found here:
+~/confluent/confluent-5.5.0/etc/kafka/
 
 
+## Example on my Ubuntu
 
 
+### Console-Source
+```bash
+connect-standalone ~/confluent/confluent-5.5.0/etc/kafka/connect-standalone.properties ~/confluent/confluent-5.5.0/etc/kafka/connect-console-source.properties
+```
 
 
+### File-Source
+In dem File `~/confluent/confluent-5.5.0/etc/kafka/connect-file-source.properties` wurde das textfile auf `/tmp/test.txt` geaendert.
+
+```bash
+connect-standalone ~/confluent/confluent-5.5.0/etc/kafka/connect-standalone.properties ~/confluent/confluent-5.5.0/etc/kafka/connect-file-source.properties
+```
 
 
+## hbase-sink-connector
+Nachdem man confluent-hub installiert hat (siehe oben)
 
+```bash
+confluent-hub install nishutayal/kafka-connect-hbase:1.0.1
+```
+https://github.com/tayalnishu/kafka-connect-hbase/blob/master/README.md
