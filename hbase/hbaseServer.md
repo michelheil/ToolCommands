@@ -25,6 +25,17 @@ stop-dfs.sh
     ResourceManager – Default HTTP port is 8088.
     MapReduce JobHistory Server – Default HTTP port is 19888.
 
+### localhost: ERROR: Cannot set priority of namenode process 7213
+Check if namenodes and/or datanodes are running
+ps -ef | grep namenode
+ps -ef | grep datanode
+kill -9 PID
+
+sudo -u hadoop bash
+hadoop datanode -format
+hadoop namenode -format
+
+
 
 ### If HMaster is not starting
 https://stackoverflow.com/questions/28295521/hbase-hdfs-integration-hbase-master-not-starting

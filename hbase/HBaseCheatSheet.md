@@ -34,4 +34,5 @@ http://hbase.apache.org/book.html#_read_hbase_shell_commands_from_a_command_file
 
 ## Simple configuration for HBase Security
 https://hbase.apache.org/book.html#hbase.secure.simpleconfiguration
+sudo su - hadoop hbase shell
 grant 'michael', 'RWCA'
