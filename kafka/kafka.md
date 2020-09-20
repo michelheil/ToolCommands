@@ -11,19 +11,19 @@ bash bin/kafka-server-start.sh config/server.properties
 
 # Kafka topic admin
 ```bash
-./kafka/current/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 4 --topic myInputTopic
+./kafka/current/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 10 --topic myInTopic
 ./kafka/current/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 ./kafka/current/bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test
 ```
 
 # Kafka Console Producer
 ```bash
-./kafka/current/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic myInputTopic --property "parse.key=true" --property "key.separator=:::"
+./kafka/current/bin/kafka-console-producer.sh --broker-list localhost:9092 --property "parse.key=true" --property "key.separator=:::" --topic myInputTopic
 ```
 
 # Kafka Console Consumer
 ```bash
-./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic myOutputTopic --from-beginning --property print.key=true --property print.value=true
+./kafka/current/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --property print.key=true --property print.value=true --topic myTopic
 ```
 
 # Console Consumer from particular offset

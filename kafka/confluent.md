@@ -44,6 +44,7 @@ ksql-server-start ~/confluent/confluent-5.5.0/etc/ksqldb/ksql-server.properties
 
 ## Create Topic
 ```bash
+cd ~/confluent/confluent-5.5.0/bin
 kafka-topics --bootstrap-server localhost:9092 --create --replication-factor 1 --partitions 1 --topic avrotest
 
 --config confluent.value.schema.validation=true
@@ -51,7 +52,7 @@ kafka-topics --bootstrap-server localhost:9092 --create --replication-factor 1 -
 
 ## Console Producer
 ```bash
-kafka-console-producer --broker-list localhost:9092 --topic TextLinesTopic
+kafka-console-producer --broker-list localhost:9092 --topic TextLinesTopic 
 
 --property "parse.key=true" --property "key.separator=:::"
 ```
@@ -111,6 +112,27 @@ curl -X POST -H "Content-Type: application/vnd.api+json" -H "Accept: application
           --data '{"data":{"attributes": {"topic_name": "topic-1", "partitions_count": 2, "replication_factor": 1, "configs": [{"name": "cleanup.policy","value": "compact"}]}}}' \
           "http://localhost:8082/v3/clusters/dW5WkttLTmeDAFUsRFUfPA/topics"
 ```
+
+
+#### List the topics belonging to a given cluster
+GET /v3/clusters/(string: cluster_id)/topics
+
+```bash
+curl -X GET -H "Accept: application/vnd.api+json" localhost:8082/v3/clusters/fSe8TRhJSruY4UzPBYm4tA/topics 
+```
+
+
+#### List all topics (Rest API V2)
+```bash
+curl -X GET -H "Accept: application/vnd.kafka.v2+json" localhost:8082/topics 
+```
+
+
+GET /topics HTTP/1.1
+Host: kafkaproxy.example.com
+Accept: application/vnd.kafka.v2+json
+
+
 
 
 
