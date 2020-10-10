@@ -43,9 +43,19 @@ bash bin/kafka-server-start.sh config/server.properties
 
 ## Change offsets for consumer Group
 With a `-5` in parameter `--shift-by` you substract 5 from current offset. The option `--execute` actually exectues the change, whereas you can use `--dry-run` to see what is hapenning. In order to change offsets for a Consumer Group it need to be inactive, i.e. not running.
-```shell
+
+```bash
 ./kafka/current/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group "CheckpointGroupId1337" --reset-offsets --topic "myTestTopicCheck:0" --shift-by -5 --execute
 ```
+
+
+# Continuously send data to Kafka
+
+```bash
+while true; do  ~/confluent/confluent-5.5.0/bin/kafka-console-producer --broker-list localhost:9092 --topic topic1 < /tmp/payload.txt ; sleep 1; done
+```
+
+
 
 
 # Stop Kafka

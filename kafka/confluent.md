@@ -45,21 +45,19 @@ ksql-server-start ~/confluent/confluent-5.5.0/etc/ksqldb/ksql-server.properties
 ## Create Topic
 ```bash
 cd ~/confluent/confluent-5.5.0/bin
-kafka-topics --bootstrap-server localhost:9092 --create --replication-factor 1 --partitions 1 --topic avrotest
+kafka-topics --bootstrap-server localhost:9092 --create --replication-factor 1 --partitions 1 --topic test
 
 --config confluent.value.schema.validation=true
 ```
 
 ## Console Producer
 ```bash
-kafka-console-producer --broker-list localhost:9092 --topic TextLinesTopic 
-
---property "parse.key=true" --property "key.separator=:::"
+kafka-console-producer --broker-list localhost:9092 --topic test --property "parse.key=true" --property "key.separator=:::"
 ```
 
 ## Console Consumer
 ```bash
-kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --property print.key=true --property print.value=true --topic hello-world-topic
+kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --property print.key=true --property print.value=true --topic test
 
 --value-deserializer org.apache.kafka.common.serialization.LongDeserializer
 ```
@@ -67,6 +65,11 @@ kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --prop
 ### Console Consumer (read only committed transactional data)
 ```bash
 kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world-topic --from-beginning --property print.key=true --property print.value=true --isolation.level=read_committed
+```
+
+# Check Consumer Groups
+```bash
+kafka-consumer-groups --bootstrap-server localhost:9092 --list
 ```
 
 ## Console AVRO Consumer
@@ -177,3 +180,12 @@ Nachdem man confluent-hub installiert hat (siehe oben)
 confluent-hub install nishutayal/kafka-connect-hbase:1.0.1
 ```
 https://github.com/tayalnishu/kafka-connect-hbase/blob/master/README.md
+
+
+# KSQL
+```bash
+confluent local start
+bash ~/confluent/confluent-5.5.0/bin/ksql
+```
+
+Die Nachrichten müssen als CSV, JSON oder AVRO serialisiert sein und deren Schema in der SchemaRegistry registriert sein.
