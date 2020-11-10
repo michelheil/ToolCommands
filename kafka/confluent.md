@@ -67,9 +67,15 @@ kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --prop
 kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world-topic --from-beginning --property print.key=true --property print.value=true --isolation.level=read_committed
 ```
 
-# Check Consumer Groups
+## Check Consumer Groups
 ```bash
 kafka-consumer-groups --bootstrap-server localhost:9092 --list
+```
+
+
+## PRoducing messages to Kafka topic
+```bash
+kafka-producer-perf-test --topic test --num-records 2000 --throughput -1 --record-size 128 --producer-props key.serializer=org.apache.kafka.common.serialization.StringSerializer --producer-props value.serializer=org.apache.kafka.common.serialization.StringSerializer --producer-props bootstrap.servers=localhost:9092
 ```
 
 ## Console AVRO Consumer
@@ -136,50 +142,14 @@ Host: kafkaproxy.example.com
 Accept: application/vnd.kafka.v2+json
 
 
-
-
-
-# Kafka Connect Example
-https://docs.confluent.io/current/connect/userguide.html
-
-## Running Standalone mode
-https://docs.confluent.io/current/connect/userguide.html#standalone-mode
-
+# Kafka JMX Metrics
 ```bash
-connect-standalone worker.properties connector1.properties [connector2.properties connector3.properties ...]
+# execute before starting Kafka (confluent local start)
+export JMX_PORT=9999
+
+
+./kafka-run-class.sh kafka.tools.JmxTool --object-name kafka.server:type=KafkaServer,name=BrokerState
 ```
-
-worker.properties can be found here:
-etc/schema-registry/connect-avro-standalone.properties
-
-conector.properties can be found here:
-~/confluent/confluent-5.5.0/etc/kafka/
-
-
-## Example on my Ubuntu
-
-
-### Console-Source
-```bash
-connect-standalone ~/confluent/confluent-5.5.0/etc/kafka/connect-standalone.properties ~/confluent/confluent-5.5.0/etc/kafka/connect-console-source.properties
-```
-
-
-### File-Source
-In dem File `~/confluent/confluent-5.5.0/etc/kafka/connect-file-source.properties` wurde das textfile auf `/tmp/test.txt` geaendert.
-
-```bash
-connect-standalone ~/confluent/confluent-5.5.0/etc/kafka/connect-standalone.properties ~/confluent/confluent-5.5.0/etc/kafka/connect-file-source.properties
-```
-
-
-## hbase-sink-connector
-Nachdem man confluent-hub installiert hat (siehe oben)
-
-```bash
-confluent-hub install nishutayal/kafka-connect-hbase:1.0.1
-```
-https://github.com/tayalnishu/kafka-connect-hbase/blob/master/README.md
 
 
 # KSQL

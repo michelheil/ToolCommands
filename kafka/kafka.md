@@ -56,6 +56,10 @@ while true; do  ~/confluent/confluent-5.5.0/bin/kafka-console-producer --broker-
 ```
 
 
+# Check topic log_dirs
+```bash
+/home/michael/kafka/kafka_2.12-2.2.0/bin/kafka-log-dirs.sh --bootstrap-server localhost:9092 --describe --topic-list connect-test
+```
 
 
 # Stop Kafka
