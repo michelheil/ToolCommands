@@ -17,7 +17,8 @@ https://docs.confluent.io/current/quickstart/ce-quickstart.html
 https://docs.confluent.io/current/cli/command-reference/index.html#cli-command-reference
 
 ```bash
-curl -L --http1.1 https://cnfl.io/cli | sh -s -- -b /<path-to-cli>
+curl -L --http1.1 https://cnfl.io/cli | sh -s -- -b /home/michael/confluent/cli/
+export PATH=$PATH:/home/michael/confluent/cli/
 ```
 
 ## Install Confluent-Hub
@@ -25,7 +26,10 @@ https://docs.confluent.io/current/connect/managing/confluent-hub/client.html#con
 
 ## Start Entire Confluent Platform
 ```bash
+# version 5.5.1
 confluent local start
+#version 6.x
+confluent local services start
 ```
 
 ## Start Zookeeper, Kafka and Schema Registry
