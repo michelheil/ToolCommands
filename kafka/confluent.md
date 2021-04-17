@@ -6,13 +6,18 @@ curl -O http://packages.confluent.io/archive/5.5/confluent-community-5.5.0-2.11.
 tar xzf confluent-community-5.5.0-2.11.tar.gz
 ```
 
-## Set environment variables
+## Set environment variables (in .bashrc)
 ```bash
+# 5.5.1
 export CONFLUENT_HOME=/home/michael/confluent/confluent-5.5.0
+export PATH=$PATH:$CONFLUENT_HOME/bin
+
+# 6.0.1
+export CONFLUENT_HOME=/home/michael/confluent-6.0.1
 export PATH=$PATH:$CONFLUENT_HOME/bin
 ```
 
-## Install Confluent CLI
+## Install Confluent CLI and add PATH in .bashrc
 https://docs.confluent.io/current/quickstart/ce-quickstart.html
 https://docs.confluent.io/current/cli/command-reference/index.html#cli-command-reference
 
