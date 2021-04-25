@@ -56,12 +56,13 @@ kafka-topics --bootstrap-server localhost:9092 --create --replication-factor 1 -
 
 ## Console Producer
 ```bash
-kafka-console-producer --broker-list localhost:9092 --topic test --property "parse.key=true" --property "key.separator=:::"
+kafka-console-producer --broker-list localhost:9092 --topic test --property "parse.key=true" --property "key.separator=:"
+kafka-producer-perf-test --producer-props bootstrap.servers=localhost:9092 --topic test --throughput -1 --record-size 20 --num-records 100
 ```
 
 ## Console Consumer
 ```bash
-kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --property print.key=true --property print.value=true --topic test
+kafka-console-consumer --bootstrap-server localhost:9092 --from-beginning --topic test --property print.key=true --property print.value=true --group testConsumerGroup
 
 --value-deserializer org.apache.kafka.common.serialization.LongDeserializer
 ```
@@ -74,10 +75,12 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic hello-world-top
 ## Check Consumer Groups
 ```bash
 kafka-consumer-groups --bootstrap-server localhost:9092 --list
+kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group testConsumerGroup
+
 ```
 
 
-## PRoducing messages to Kafka topic
+## Producing messages to Kafka topic
 ```bash
 kafka-producer-perf-test --topic test --num-records 2000 --throughput -1 --record-size 128 --producer-props key.serializer=org.apache.kafka.common.serialization.StringSerializer --producer-props value.serializer=org.apache.kafka.common.serialization.StringSerializer --producer-props bootstrap.servers=localhost:9092
 ```

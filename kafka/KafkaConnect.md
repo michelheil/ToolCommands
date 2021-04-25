@@ -120,11 +120,12 @@ curl -i -X PUT -H "Accept:application/json" \
         "input.file.pattern": ".*\\.csv",
         "schema.generation.enabled":"true",
         "csv.first.row.as.header":"true",
-        "transforms": "MaskField, AddressMask",
+        "transforms": "MaskField",
         "transforms.MaskField.type": "org.apache.kafka.connect.transforms.MaskField$Value",
-        "transforms.MaskField.fields": "model"
-        "transforms.AddressMask.type": "org.apache.kafka.connect.transforms.MaskField$Value"
-        "transforms.AddressMask.fields": "delivery_address"
+        "transforms.MaskField.fields": "model",
+        "transforms": "AddressMask",
+        "transforms.AddressMask.type": "org.apache.kafka.connect.transforms.MaskField$Value",
+        "transforms.AddressMask.fields": "delivery_address",
         "transforms.AddressMask.replacement": "anonymisedAddress"
         }'
 ```
