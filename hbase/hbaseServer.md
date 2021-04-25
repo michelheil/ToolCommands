@@ -25,6 +25,16 @@ stop-dfs.sh
     ResourceManager – Default HTTP port is 8088.
     MapReduce JobHistory Server – Default HTTP port is 19888.
 
+### connect to host localhost port 22: Connection refused
+1) Remove SSH with the following command:
+  sudo apt-get remove openssh-client openssh-server
+
+2) Install SSH again with:
+  sudo apt-get install openssh-client openssh-server
+https://stackoverflow.com/questions/17335728/connect-to-host-localhost-port-22-connection-refused
+
+
+
 ### localhost: ERROR: Cannot set priority of namenode process 7213
 Check if namenodes and/or datanodes are running
 ps -ef | grep namenode
@@ -34,7 +44,6 @@ kill -9 PID
 sudo -u hadoop bash
 hadoop datanode -format
 hadoop namenode -format
-
 
 
 ### If HMaster is not starting
