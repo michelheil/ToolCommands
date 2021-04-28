@@ -5,13 +5,22 @@
 sudo apt-get -y install scala
 scala -version
 
+# After installation according to official Spark website
+Download file
+tar zxvf spark-3.1.1-bin-hadoop3.2.tgz
+sudo ln -s spark-3.1.1-bin-hadoop3.2 current
 
+# In /home/michael/.bashrc hinzufügen
 ```shell
 export SPARK_HOME="/home/michael/spark/current"
 export PATH=$PATH:$SPARK_HOME/bin
 ```
 
 
+
+
+
+# Example
 ./bin/spark-shell --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.0
 
 ```scala
@@ -32,7 +41,3 @@ df.writeStream
 
 spark.streams.awaitAnyTermination()
 ```
-
-
-
-kafka-console-producer --broker-list localhost:9092 --topic sparkShellIn --property "parse.key=true" --property "key.separator=:::"
