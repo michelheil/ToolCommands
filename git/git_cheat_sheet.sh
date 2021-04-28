@@ -44,6 +44,15 @@ git config --global core.excludefile ~/.gitignore
 # local configuration within the actual local repository of ignoring files
 echo "*.tmp" >> .gitignore
 
+# check origin url
+git remote -v
+
+# change origin url
+git remote set-url origin https://github.com/apache/hbase.git
+
+#  get the git root directory
+git rev-parse --show-toplevel
+
 
 ########################################################################
 # Creating your first repository and link it to GitHub
