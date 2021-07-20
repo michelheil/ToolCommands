@@ -9,6 +9,7 @@ git clone https://github.com/USERNAME/REPONAME.git
 cd REPONAME
 
 git remote add upstream https://github.com/ANDERER_USER/ORIGINALREPO.git
+git fetch upstream
 git branch -u upstream/master
 
 [...Neue Änderungen auf dem Originalprojekt auf GitHub...]
