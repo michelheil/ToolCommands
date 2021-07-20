@@ -7,6 +7,8 @@ Check Hadoop Cluster Overview at http://ServerIP:8088
 # Hadoop configuration
 /usr/local/hadoop/etc/hadoop
 
+In hdfs-site.xml set dfs.permissions.enabled = false such that the user "michael" has permissions.
+
 /usr/local/hadoop/etc/hadoop$ ls
 * capacity-scheduler.xml
 * configuration.xsl
