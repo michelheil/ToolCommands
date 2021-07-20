@@ -1,0 +1,5 @@
+# Convert JPGs into PDF
+convert *.jpg -auto-orient pictures.pdf
+
+# Resize Image
+convert -resize 30% AntragMichaelHeil01.jpg AntragMichaelHeil01_klein.jpg

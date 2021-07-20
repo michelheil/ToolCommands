@@ -1,0 +1,9 @@
+# Turn on Bluetooth
+
+https://askubuntu.com/questions/1231074/ubuntu-20-04-bluetooth-not-working
+
+I experienced the same issue, after a hot boot switch from Windows to Ubuntu, Bluetooth failed to work. I followed the Ubuntu bug report here, and Bluetooth fully functions. Use the following commands:
+
+    sudo rmmod btusb
+    sudo modprobe btusb
+

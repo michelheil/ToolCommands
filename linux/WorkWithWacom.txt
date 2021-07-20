@@ -1,0 +1,11 @@
+# Wacom
+xsetwacom --version
+
+xsetwacom --list devices
+
+xsetwacom set "Wacom Intuos BT M Pad pad" Button 2 key "b"
+
+xsetwacom set "Wacom Intuos BT M Pad pad" Button 1 key "ctrl F"
+
+
+https://askubuntu.com/questions/183354/configuring-wacom-tablet-buttons-and-options

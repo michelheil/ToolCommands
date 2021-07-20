@@ -26,12 +26,25 @@ sudo apt -y install sublime-text
 ##############################################
 sudo apt install openjdk-8-jdk openjfx
 
-
 ##############################################
 ## Java Environment
 ##############################################
 ## set JAVA_HOME via command linea append
 sudo tee -a /etc/environment <<< "JAVA_HOME='/usr/lib/jvm/java-8-openjdk-amd64/jre/'"
+source /etc/environment
+echo $JAVA_HOME
+
+
+##############################################
+## install OpenJDK 11
+##############################################
+sudo apt install openjdk-11-jdk
+
+##############################################
+## Java Environment
+##############################################
+## set JAVA_HOME via command linea append
+sudo tee -a /etc/environment <<< "JAVA_HOME='/usr/lib/jvm/java-11-openjdk-amd64/'"
 source /etc/environment
 echo $JAVA_HOME
 
@@ -149,6 +162,12 @@ sudo service ssh status
 sudo apt install snap
 sudo snap install slack --classic
 
+##############################################
+## Draw.io
+##############################################
+# https://snapcraft.io/install/drawio/ubuntu
+sudo snap install drawio
+
 
 ##############################################
 ## install spotify
@@ -170,6 +189,12 @@ sudo apt-get install vlc
 ## Mosquitto MQTT
 ##############################################
 sudo apt-get install mosquitto mosquitto-clients
+
+
+##############################################
+sudo apt install gpaint
+
+
 
 ##############################################
 ## Microsoft Visual Studio Code
