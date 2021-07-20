@@ -35,7 +35,7 @@ git config --global core.eol lf
 # there are some more config settings availabe when working with Windows-edited files. However, this is quite a big hussle. So keep on Linux :-)
 
 # define standard editor for commit messages
-git config --global core.editor vi
+git config --global core.editor vim
 
 
 # global configuration of ignoring files
@@ -54,37 +54,32 @@ git remote set-url origin https://github.com/apache/hbase.git
 git rev-parse --show-toplevel
 
 
-########################################################################
-# Creating your first repository and link it to GitHub
-########################################################################
 
-# Follow these steps:
-### Create a repository in GitHub, for example called "gitCheatSheet". This will be your remote repository
-### Save this file where you want to have your local repository, e.g. /home/michael/git-repositories/gitCheatSheet
+###########################################################################
+# Tips vom Buch "Git -Verteilte Versionsverwaltung für Code und Dokumente"
+###########################################################################
 
-# Add a README file
-echo "# gitCheatSheet" >> README.md
+git add -p
+git config --global interactive.singlekey true
 
-# Initialize git repository 
-cd ~/git-repositories/gitCheatSheet
-git init
-# repsone:
-# Initialized empty Git repository in /home/michael/git-repositories/gitCheatSheet/.git/
+git diff -staged
 
-# Add this file and the README.md to the repository
-git status
+## Add current staging are to latest commit within the branch
+git commit --amend
 
-git add README.md
-git add git_cheat_sheet.sh 
+git rm
+git mv
 
-git status
+git log -4
+git log --follow -- <datei>
+git log --after='Tue Feb 1st, 2011'
+git log --since='2011-01-01'
+git log --since='100 weeks ago' --before='one week ago'
+git log --since='yesterday'
+git log --since='yesterday' --author='Michael Heil'
 
-# Do a commit and push to remote repository
-git commit -m "first commit"
+## Search in commit messages
+git log -i --grep=<searchString>
 
-# Create a new GitHub repository (DO NOT INITIALIZE) and copy URL into next command
-git remote add origin https://github.com/michelheil/gitCheatSheet.git
-git push -u origin master
-
-# type in GitHub username and password
-
+## Search in Diff
+git log -p -S<searchString>
